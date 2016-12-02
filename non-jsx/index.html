@@ -11,13 +11,26 @@
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
     <script>
      var TextAreaCounter = React.createClass({
+       getInitialState: function() {
+         return {
+           text: this.props.text
+         };
+       },
+
+       handleChange: function(e) {
+         this.setState({
+           text: e.target.value
+         });
+       },
+
        render: function() {
          return React.DOM.div(null,
                               React.DOM.textarea({
-                                defaultValue: this.props.text,
+                                defaultValue: this.state.text,
+                                onChange: this.handleChange
                               }),
                               React.DOM.h3(null,
-                                           this.props.text.length));
+                                           this.state.text.length));
        }
      });
 
