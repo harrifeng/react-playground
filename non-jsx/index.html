@@ -10,8 +10,21 @@
     <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
     <script>
+     var TextAreaCounter = React.createClass({
+       render: function() {
+         return React.DOM.div(null,
+                              React.DOM.textarea({
+                                defaultValue: this.props.text,
+                              }),
+                              React.DOM.h3(null,
+                                           this.props.text.length));
+       }
+     });
+
      ReactDOM.render(
-       React.DOM.h1(null, "Hello World"),
+       React.createElement(TextAreaCounter, {
+         text: 'Bob'
+       }),
        document.getElementById("app")
      );
     </script>
