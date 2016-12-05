@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Non Jsx react version</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
     </script>
   </head>
   <body>
@@ -30,14 +31,16 @@
                            React.DOM.thead(null,
                                            React.DOM.tr(null,
                                                         this.props.headers.map(
-                                                          title => React.DOM.th(null, title)))))
+                                                          (title, idx) =>
+                                                            React.DOM.th({key: idx}, title)))))
          );
        }
      });
 
      ReactDOM.render(
-       React.createElement(TextAreaCounter, {
-         defaultValue: 'Bob'
+       React.createElement(Excel, {
+         headers: headers,
+         initialData: data
        }),
        document.getElementById("app")
      );
