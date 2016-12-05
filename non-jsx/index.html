@@ -26,14 +26,24 @@
 
      var Excel = React.createClass({
        getInitialState: function() {
-         return {data: this.props.initialData};
+         return {
+           data: this.props.initialData,
+           sortby: null,
+           descending: false
+         };
        },
 
        _sort: function(e) {
-         let pos = e.target.cellIndex;
-         let tmp = this.state.data.sort((a, b) => (a[pos] > b[pos]) ? 1 : -1);
-         this.setState((prevState) => {
-           data: tmp
+         let column = e.target.cellIndex;
+         let descending = this.state.sortby === column && !this.state.descending;
+
+         let tmp = this.state.data.sort((a, b) => descending ?
+                                                (a[column] < b[column] ? 1 : -1) :
+                                                (a[column] > b[column] ? 1 : -1));
+         this.setState({
+           data: tmp,
+           sortby: column,
+           descending: descending
          });
        },
 
