@@ -29,10 +29,18 @@
          return {data: this.props.initialData};
        },
 
+       _sort: function(e) {
+         let pos = e.target.cellIndex;
+         let tmp = this.state.data.sort((a, b) => (a[pos] > b[pos]) ? 1 : -1);
+         this.setState((prevState) => {
+           data: tmp
+         });
+       },
+
        render: function() {
          return (
            React.DOM.table(null,
-                           React.DOM.thead(null,
+                           React.DOM.thead({onClick: this._sort},
                                            React.DOM.tr(null,
                                                         this.props.headers.map(
                                                           (title, idx) =>
