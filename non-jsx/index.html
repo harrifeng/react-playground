@@ -46,6 +46,10 @@
          };
        },
 
+       componentDidMount: function() {
+         $('#hfeng').tooltip();
+       },
+
        _sort: function(e) {
          let column = e.target.cellIndex;
          let descending = this.state.sortby === column && !this.state.descending;
@@ -164,23 +168,24 @@
        },
 
        _handleTest: function() {
-         alert("test Hanle");
        },
-       
+
 
        _renderTest: function() {
          return (
            React.DOM.button({
+             id: 'hfeng',
              onClick: this._handleTest,
+             "data-placement": "bottom",
+             title: "Click To Copy!",
              style:{
                "color":"red",
-               "dataToggle":"tooltip",
-               "title": "Hooray!"}},
+             }},
                             "hello")
          );
-         
+
        },
-       
+
 
        render: function() {
          return (
