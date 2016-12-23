@@ -163,11 +163,31 @@
          )
        },
 
+       _handleTest: function() {
+         alert("test Hanle");
+       },
+       
+
+       _renderTest: function() {
+         return (
+           React.DOM.button({
+             onClick: this._handleTest,
+             style:{
+               "color":"red",
+               "dataToggle":"tooltip",
+               "title": "Hooray!"}},
+                            "hello")
+         );
+         
+       },
+       
+
        render: function() {
          return (
            React.DOM.div(null,
                          this._renderToolbar(),
-                         this._renderTable()
+                         this._renderTable(),
+                         this._renderTest()
            )
          );
        }
