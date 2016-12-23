@@ -42,6 +42,7 @@
            sortby: null,
            descending: false,
            edit: null,
+           hint: 'Click to copy',
            search: false
          };
        },
@@ -168,24 +169,29 @@
        },
 
        _handleTest: function() {
+         $('#copied').toggle();
        },
 
 
        _renderTest: function() {
          return (
-           React.DOM.button({
-             id: 'hfeng',
-             onClick: this._handleTest,
-             "data-placement": "bottom",
-             title: "Click To Copy!",
-             style:{
-               "color":"red",
-             }},
-                            "hello")
+           React.DOM.div({},
+                         React.DOM.button({
+                           id: 'hfeng',
+                           onClick: this._handleTest,
+                           "data-placement": "bottom",
+                           title: this.state.hint,
+                           style:{
+                             "color":"red",
+                           }},"hello"),
+                                          
+                         React.DOM.div({
+                           id: 'copied',
+                           style: {
+                           }
+                         },"Copied!!!"))
          );
-
        },
-
 
        render: function() {
          return (
